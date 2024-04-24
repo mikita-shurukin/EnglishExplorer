@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        /* Стили остаются такими же */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        <p>Thank you for visiting! This is the home page of my website.</p>
+        <form id="createForm">
+            <button type="submit">Create New Word</button>
+        </form>
+        <a href="/words">Go to Words</a>
+    </div>
+
+    <script>
+        // JavaScript для отправки формы создания нового слова
+        document.getElementById("createForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            fetch("/words/createword", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Обработка успешного создания слова
+                console.log(data);
+                window.location.href = "/words"; // Перенаправление на страницу со словами после создания нового слова
+            })
+            .catch(error => {
+                // Обработка ошибки
+                console.error("There was a problem with your fetch operation:", error);
+            });
+        });
+    </script>
+</body>
+</html>
