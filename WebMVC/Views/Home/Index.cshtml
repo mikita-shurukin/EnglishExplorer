@@ -18,7 +18,9 @@
 
         .btn-container {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap; /* Позволяет кнопкам переходить на новую строку */
+            justify-content: space-between; /* Равномерно распределяет кнопки по горизонтали */
+            gap: 20px; /* Отступ между кнопками */
         }
 
         .btn {
@@ -28,13 +30,13 @@
             background-position: center;
             color: white;
             text-align: center;
-            text-decoration: none; /* Remove underline */
-            display: inline-block; /* Make it inline block to center text */
-            border: none; /* Remove border */
+            text-decoration: none;
+            display: inline-block;
+            border: none;
             cursor: pointer;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for contour */
-            -webkit-text-stroke: 1px white; /* Add white stroke around text */
-            text-stroke: 1px black; /* Add white stroke around text */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            -webkit-text-stroke: 1px white;
+            text-stroke: 1px black;
         }
 
         .get-words-btn {
@@ -48,6 +50,18 @@
         .random-words-btn {
             background-image: url('/images/img3.jpg');
         }
+
+        .get-phrases-btn {
+            background-image: url('/image/img1.jpg');
+        }
+
+        .create-phrases-btn {
+            background-image: url('/images/img2.jpg');
+        }
+
+        .random-phrases-btn {
+            background-image: url('/images/img3.jpg');
+        }
     </style>
 </head>
 <body>
@@ -57,6 +71,10 @@
             <a class="btn get-words-btn" href="@Url.Action("Get", "Words")">My all words</a>
             <a class="btn create-words-btn" href="@Url.Action("Create", "Words")">Create new word</a>
             <a class="btn random-words-btn" href="@Url.Action("RandomWords", "Words")">Random Words Game</a>
+
+          @*   <a class="btn get-phrases-btn" href="@Url.Action("Get", "Phrases")">My all phrases</a>
+            <a class="btn create-phrases-btn" href="@Url.Action("Create", "Phrases")">Create new phrase</a>
+            <a class="btn random-phrases-btn" href="@Url.Action("RandomPhrases", "Phrases")">Random Phrases Game</a> *@
         </div>
     </div>
 </body>

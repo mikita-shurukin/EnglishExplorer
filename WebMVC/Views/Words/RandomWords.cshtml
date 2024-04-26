@@ -22,15 +22,17 @@
 
         h2 {
             margin-bottom: 20px;
+            color: #007bff; /* Цвет заголовка */
         }
 
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold; /* Жирный шрифт для метки */
         }
 
         input[type="text"] {
-            width: 100%;
+            width: calc(100% - 40px); /* Выравнивание поля ввода по ширине контейнера */
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
@@ -67,8 +69,8 @@
         }
 
         #nextButton {
-            display: block; /* Ровное появление кнопки */
-            margin: 20px auto 0; /* Ровный отступ сверху */
+            display: block;
+            margin: 20px auto 0;
         }
     </style>
 </head>
@@ -90,8 +92,8 @@
         document.getElementById("translationForm").addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent form submission
 
-            var translation = document.getElementById("translationInput").value.trim().toLowerCase(); // Convert to lowercase and remove leading/trailing spaces
-            var correctTranslation = document.getElementById("wordText").getAttribute("data-translation").trim().toLowerCase(); // Get correct translation from data-attribute
+            var translation = document.getElementById("translationInput").value.trim().toLowerCase();
+            var correctTranslation = document.getElementById("wordText").getAttribute("data-translation").trim().toLowerCase();
 
             var resultMessage = document.getElementById("resultMessage");
             resultMessage.style.display = "block";
@@ -100,23 +102,19 @@
                 resultMessage.textContent = "Correct!";
                 resultMessage.classList.add("correct");
             } else {
-                resultMessage.textContent = "Incorrect. Correct answer: " + decodeHtml(correctTranslation); // Decode HTML entities
+                resultMessage.textContent = "Incorrect. Correct answer: " + decodeHtml(correctTranslation);
                 resultMessage.classList.add("incorrect");
             }
 
-            // Reset input after checking
             document.getElementById("translationInput").value = "";
 
-            // Show next button
             document.getElementById("nextButton").style.display = "block";
         });
 
         document.getElementById("nextButton").addEventListener("click", function () {
-            // Redirect to get a new random word
             window.location.reload();
         });
 
-        // Function to decode HTML entities
         function decodeHtml(html) {
             var txt = document.createElement("textarea");
             txt.innerHTML = html;
