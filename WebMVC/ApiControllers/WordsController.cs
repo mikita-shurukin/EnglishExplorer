@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using WebMVC.DAL;
 using WebMVC.DAL.Models;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace WebMVC.Controllers
 {
@@ -28,7 +29,6 @@ namespace WebMVC.Controllers
             return View(await words.AsNoTracking().ToListAsync());
         }
 
-
         [HttpGet]
         public IActionResult Create()
         {
@@ -37,13 +37,13 @@ namespace WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm]Word word)
+        public async Task<IActionResult> Create([FromForm] Word word)
         {
             if (ModelState.IsValid)
             {
                 _dbContext.Words.Add(word);
                 await _dbContext.SaveChangesAsync();
-                return CreatedAtAction(nameof(Index), word);
+                return CreatedAtAction(nameof(Get), new { id = word.Id }, word);
             }
             return BadRequest(ModelState);
         }
@@ -66,10 +66,7 @@ namespace WebMVC.Controllers
         [HttpGet]
         public IActionResult RandomWords()
         {
-            // Получаем случайное слово из базы данных
             var randomWord = _dbContext.Words.OrderBy(w => Guid.NewGuid()).FirstOrDefault();
-
-            // Передаем случайное слово на страницу
             return View(randomWord);
         }
     }

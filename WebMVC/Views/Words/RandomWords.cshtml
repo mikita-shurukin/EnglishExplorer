@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model WebMVC.DAL.Models.Word
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Random Words Game</title>
@@ -72,6 +74,17 @@
             display: block;
             margin: 20px auto 0;
         }
+
+        .link {
+            margin-top: 20px;
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .link:hover {
+                text-decoration: underline;
+            }
     </style>
 </head>
 <body>
@@ -86,6 +99,7 @@
         </form>
         <div id="resultMessage"></div>
         <button id="nextButton" style="display: none;">Next</button>
+        <a href="@Url.Action("Get", "Words")" class="link">Search and Create Words</a>
     </div>
 
     <script>

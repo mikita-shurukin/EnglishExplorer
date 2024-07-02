@@ -1,0 +1,15 @@
+﻿@model WebMVC.DAL.Models.GrammarTopic
+
+<h1 class="my-4">Create New Topic</h1>
+
+<form asp-action="CreateTopic" method="post" class="mb-4">
+    <div class="form-group">
+        <label asp-for="Title" class="form-label">Title:</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Create</button>
+    
+    <div asp-validation-summary="All" class="text-danger mt-2"></div>
+</form>`

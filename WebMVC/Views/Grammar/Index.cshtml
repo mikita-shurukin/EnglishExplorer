@@ -1,0 +1,14 @@
+﻿@model List<WebMVC.DAL.Models.GrammarTopic>
+
+<h1 class="my-4">Grammar Topics</h1>
+
+<div class="mb-4">
+    <a asp-action="CreateTopic" class="btn btn-primary">Create New Topic</a>
+</div>
+
+<div class="list-group">
+    @foreach (var topic in Model)
+    {
+        <a href="@Url.Action("ViewTopic", new { id = topic.Id })" class="list-group-item list-group-item-action">@topic.Title</a>
+    }
+</div>

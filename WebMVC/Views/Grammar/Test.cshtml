@@ -1,0 +1,49 @@
+﻿@model WebMVC.DAL.Models.GrammarTopic
+
+@if (Model == null)
+{
+    <div class="container">
+        <p class="text-center mt-5">No topic found.</p>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="my-4">@Model.Title - Test</h1>
+
+                <form asp-action="SubmitTest" method="post">
+                    @if (Model.TestQuestions != null && Model.TestQuestions.Any())
+                    {
+                        <ol class="list-group">
+                            @foreach (var question in Model.TestQuestions)
+                            {
+                                <li class="list-group-item mb-3">
+                                    <h4>@question.QuestionText</h4>
+                                    <ul class="list-unstyled mt-2">
+                                        @foreach (var answer in question.Answers)
+                                        {
+                                            <li class="mb-2">
+                                                <input type="radio" id="@($"answer_{answer.Id}")" name="@($"question_{question.Id}")" value="@answer.Id">
+                                                <label for="@($"answer_{answer.Id}")">@answer.AnswerText</label>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ol>
+                    }
+                    else
+                    {
+                        <p>No test questions available.</p>
+                    }
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-success">Submit Test</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

@@ -5,7 +5,7 @@
 namespace WebMVC.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatePhrases : Migration
+    public partial class Da : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

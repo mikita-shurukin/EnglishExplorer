@@ -1,0 +1,15 @@
+﻿@model WebMVC.DAL.Models.GrammarContent
+
+<h1>Add Content to @ViewBag.TopicTitle</h1>
+
+<form asp-action="AddContent" method="post">
+    <input type="hidden" asp-for="GrammarTopicId" />
+
+    <div>
+        <label asp-for="ContentText">Content:</label>
+        <textarea asp-for="ContentText" class="form-control">@Model.ContentText</textarea>
+        <span asp-validation-for="ContentText" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Content</button>
+</form>
