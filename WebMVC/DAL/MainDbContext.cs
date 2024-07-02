@@ -29,7 +29,6 @@ namespace WebMVC.DAL
                 .WithOne(q => q.GrammarTopic)
                 .HasForeignKey(q => q.GrammarTopicId);
 
-            // Другие конфигурации сущностей здесь
 
             base.OnModelCreating(modelBuilder);
         }
